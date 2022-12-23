@@ -1,21 +1,60 @@
 <html>
-<head>
-    <script>
-        MathJax = {
-        tex:{
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
-            },
-        svg:{
-                fontCache: 'global'
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        TeX: {
+            equationNumbers: {
+                autoNumber: 'AMS'
             }
-        };
-    </script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/babel-polyfill/7.8.7/polyfill.js?features=es6"></script>
-    <script type="text/javascript" id="MathJax-script" async  src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.0.5/es5/tex-chtml.js"></script>
+        }
+    });
+    MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+        MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+        if (data.display) {
+            var next = data.script.nextSibling;
+            while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+            if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+        }
+        });
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i = 0; i < all.length; i += 1) {
+            document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script>
+    MathJax = {
+        options: {
+            enableMenu: true,
+            menuOptions: {
+                settings: {
+                    zoom: 'Hover',
+                    zscale: '150%', 
+                    alt: false,
+                    cmd: false,
+                    ctrl: false,
+                    shift: false,
+                    collapsible: true
+                }
+            }
+        }
+    };
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
-    <h1><code>https://{</code>$2^{64} + 1$<code>}.github.io</code></h1>
-    <p>\u6155\u541b\u4e4b\u5fc3\uff0c\u81f3\u6b7b\u65b9\u4f11\u3002</p>
+    <h1><code>https://{</code>$2^{64} + 1xy$<code>}.github.io</code></h1>
+    <p>$$
+        \Huge{a(n) = 2\times \lfloor\dfrac{n+2}{2}\rfloor^2}, n\in \mathbb{N}
+        $$</p>
     <p><a href="https://github.com/18446744073709551617/18446744073709551617.github.io">Source Code</a></p>
 </body>
 </html>
